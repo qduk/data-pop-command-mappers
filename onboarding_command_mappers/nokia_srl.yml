@@ -1,7 +1,7 @@
 sync_devices:
   hostname:
     commands:
-      command: ""show version | as json"
+      command: "show version | as json"
       parser: "none"
       jpath: "basic system info".Hostname
   serial:
