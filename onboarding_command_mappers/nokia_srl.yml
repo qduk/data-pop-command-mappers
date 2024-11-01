@@ -15,6 +15,7 @@ sync_devices:
       - command: "show version | as json"
         parser: "none"
         jpath: '"basic system info"."Chassis Type"'
+        iterable_type: "str"
   mgmt_interface:
     commands:
       - command: "show interface all | as json"
@@ -26,3 +27,4 @@ sync_devices:
         parser: "none"
         jpath: "interfaces[?subinterfaces].subinterfaces[].address[?contains(prefix, `{{ obj }}`)][].prefix"
         post_processor: "{% if '/' in obj[0] %}{{ obj[0].split('/')[1] }}{% else %}31{% endif %}"
+        iterable_type: "int"
